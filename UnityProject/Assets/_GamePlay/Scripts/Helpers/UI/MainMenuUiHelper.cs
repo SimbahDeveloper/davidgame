@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Model;
-
+[RequireComponent(typeof(SwipeManager))]
 public class MainMenuUiHelper : MonoBehaviour
 {
     public GameObject blockMe;
@@ -11,12 +11,59 @@ public class MainMenuUiHelper : MonoBehaviour
     public GameObject quitPanel;
     public GameObject leaderboard;
     public GameObject pesanPanel;
+    public GameObject connection;
 
     [Header("prefabs me")]
     public GameObject listLeaderboard;
 
     Animator _manageAnimator;
     Transform listing;
+
+    public float paddleSpeed = 1;
+    public Vector3 playerPos;
+    private Vector2 touchOrigin = -Vector2.one;
+
+    bool kelu = false;
+    void HandleSwipe(SwipeAction swipeAction)
+    {
+        //Debug.LogFormat("HandleSwipe: {0}", swipeAction);
+        if (swipeAction.direction == SwipeDirection.Up || swipeAction.direction == SwipeDirection.UpRight)
+        {
+            Debug.Log("up");
+        }
+        else if (swipeAction.direction == SwipeDirection.Right || swipeAction.direction == SwipeDirection.DownRight)
+        {
+            if (leaderboard.activeInHierarchy&&!kelu)
+            {
+                kelu = true;
+                leaderboard.GetComponent<Animator>().Play("LederIn");
+            }
+            else
+            {
+                kelu = true;
+                leaderboard.SetActive(true);
+            }
+
+            Debug.Log("right");
+        }
+        else if (swipeAction.direction == SwipeDirection.Down || swipeAction.direction == SwipeDirection.DownLeft)
+        {
+            Debug.Log("down");
+        }
+        else if (swipeAction.direction == SwipeDirection.Left || swipeAction.direction == SwipeDirection.UpLeft)
+        {
+            // move left
+            if (kelu)
+            {
+                kelu = false;
+                leaderboard.GetComponent<Animator>().Play("LeaderOut");
+            }
+
+            Debug.Log("left");
+        }
+    }
+
+
     public void SetLeaderboard(List<LeaderScore> scores)
     {
         List<LeaderScore> score;
@@ -35,8 +82,29 @@ public class MainMenuUiHelper : MonoBehaviour
         StartCoroutine(Send(s));
     }
 
+    public GameObject GetConnectionPanel()
+    {
+        return connection;
+    }
+
+    public void onPlayGameClik()
+    {
+        escapeKill = true;
+        blockMe.SetActive(true);
+        connection.SetActive(true);
+        GameObject.Find("Scripts").GetComponent<GameManager>().StartGame(connection);
+    }
+
+    public void CancelFindRoom()
+    {
+        blockMe.SetActive(false);
+        connection.GetComponent<Animator>().Play("OnOut");
+        cekcon = true;
+    }
+
     IEnumerator Send (string pesan)
     {
+        escapeKill = true;
         blockMe.SetActive(true);
         pesanPanel.SetActive(true);
         var ff = pesanPanel.GetComponentsInChildren<Transform>();
@@ -52,6 +120,8 @@ public class MainMenuUiHelper : MonoBehaviour
         Manage.SetActive(false);
         quitPanel.SetActive(false);
         pesanPanel.SetActive(false);
+        connection.SetActive(false);
+        leaderboard.SetActive(false);
         listing = leaderboard.GetComponentsInChildren<Transform>()[2];
 
         //Test
@@ -74,6 +144,8 @@ public class MainMenuUiHelper : MonoBehaviour
     bool cekMan = false;
     bool cekque = false;
     bool cekmes = false;
+    bool cekcon = false;
+    bool escapeKill = false;
     public void BackManage()
     {
         _manageAnimator.Play("OnOut");
@@ -128,18 +200,32 @@ public class MainMenuUiHelper : MonoBehaviour
             {
                 pesanPanel.SetActive(false);
                 cekmes = false;
+                escapeKill = false;
+            }
+        }
+        if (cekcon)
+        {
+            blockMe.SetActive(false);
+            if (connection.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("OnOut") &&
+                connection.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                connection.SetActive(false);
+                cekcon = false;
+                escapeKill = false;
             }
         }
 
         #region backscape
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)&&!escapeKill)
         {
             if (quitPanel.activeInHierarchy)
             {
+                playOnClick();
                 HideQuite();
             }
             else
             {
+                playOnClick();
                 if (!Manage.activeInHierarchy)
                 {
                     ShowQuit();
@@ -162,6 +248,9 @@ public class MainMenuUiHelper : MonoBehaviour
     AudioHelper _audioMan;
     private void Start()
     {
+        SwipeManager swipeManager = GetComponent<SwipeManager>();
+        swipeManager.onSwipe += HandleSwipe;
+
         #region AudioManagement
 
         var AudioScrp = GameObject.Find("Audio").GetComponent<AudioHelper>();
