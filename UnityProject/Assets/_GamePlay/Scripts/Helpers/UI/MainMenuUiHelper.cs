@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class MainMenuUiHelper : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject blockMe;
+    public GameObject Manage;
+
+
+    Animator _manageAnimator;
+
+    void InitGo()
     {
-        
+        _manageAnimator = Manage.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    bool cekMan = false;
+    public void BackManage()
     {
-        
+        _manageAnimator.Play("OnOut");
+        cekMan = true;
+    }
+
+
+    private void Update()
+    {
+        if (cekMan)
+        {
+            blockMe.SetActive(false);
+            if (_manageAnimator.GetCurrentAnimatorStateInfo(0).IsName("OnOut") &&
+                _manageAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                Manage.SetActive(false);
+
+                cekMan = false;
+            }
+        }
+    }
+    private void Start()
+    {
+        InitGo();
     }
 }
