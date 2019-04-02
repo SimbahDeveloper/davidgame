@@ -7,7 +7,11 @@ public class GameManager : MonoBehaviour
 {
     PlayerModel playerModel;
 
-    public NetworkCon network;
+    public PlayerModel GetPlayer()
+    {
+        return playerModel;
+    }
+
     public static GameManager _instance = null;
     GameObject panelConect;
     private void Awake()
@@ -30,7 +34,6 @@ public class GameManager : MonoBehaviour
     public void CreateRoom()
     {
         PesanTO("create room");
-        network.CreateRoom(playerModel.name + "_room");
     }
 
     public void PesanTO(string huh)
@@ -42,7 +45,6 @@ public class GameManager : MonoBehaviour
     public void StartGame(GameObject panelConnection)
     {
         panelConect = panelConnection;
-        network.CheckRoom();
     }
     public void CancelFindRoom(GameObject panelConnection)
     {

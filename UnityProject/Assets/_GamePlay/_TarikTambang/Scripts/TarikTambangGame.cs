@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Model;
+using PengembangSebelah;
 
 public class TarikTambangGame : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class TarikTambangGame : MonoBehaviour
 
     [Header ("Pembatu Variabel")]
     #region variabel
-    public GameObject MyPlayer;
+    public GameObject PlayersModel;
     bool EndGame = false;
 
     //private
@@ -28,19 +29,39 @@ public class TarikTambangGame : MonoBehaviour
     PlayerScript _enemyScript;
     #endregion
 
+    public ServerPlayerModel model;
+    string enemy_key="tes123";
+    string my_key;
+    public void SetEnemyKey(string s)
+    {
+        this.enemy_key = s;
+    }
+
+    public void SetModel(ServerPlayerModel model)
+    {
+        this.model = model;
+    }
+
     private void Awake()
     {
-        _uiScript = gameObject.GetComponent<TarikTambangUI>();
-        _playerScript = MyPlayer.GetComponent<PlayerScript>();
-        EnemyPlayer = _playerScript.myEnemie;
-        _enemyScript = EnemyPlayer.GetComponent<PlayerScript>();
+        var uhut = PlayersModel.GetComponentsInChildren<PlayerScript>();
+        foreach (var item in uhut)
+        {
+            if (item.GetModelPlayer() == model)
+            {
+               _playerScript = item;
+               _playerScript.SetMyChar(enemy_key,"fghj");
+                EnemyPlayer = _playerScript.myEnemie;
+                _enemyScript = EnemyPlayer.GetComponent<PlayerScript>();
 #if UNITY_EDITOR
-        player = new PlayerModel();
-        player.name = "Debug";
-        player.power = 1f;
+                player = new PlayerModel();
+                player.name = "Debug";
+                player.power = 1f;
 #endif
-
-        _playerScript.myName += player.name;
+                _playerScript.myName += player.name;
+            }
+        }
+        _uiScript = gameObject.GetComponent<TarikTambangUI>();
     }
 
     void InitGame()
@@ -48,20 +69,36 @@ public class TarikTambangGame : MonoBehaviour
         #region Editor
 
 #if UNITY_EDITOR
+        
         if (Input.GetKey(KeyCode.Space))
         {
             _playerScript.myPower += player.power;
+            UpdatePower(my_key);
         }
         else if (Input.GetKey(KeyCode.A))
         {
             _playerScript.myPower -= player.power;
         }
+        //#elif UNITY_ANDROID
+        var touchs = InputHelper.GetTouches();
 #endif
         #endregion
 
+        if (touchs.Count > 0)
+        {
+            Touch t = touchs[0];
+            if (t.phase != TouchPhase.Began) return;
+            _playerScript.myPower += player.power;
+            Debug.Log("Touch");
+        }
+
         float _wino = calWino(_playerScript.myPower, _enemyScript.myPower);
-        Debug.Log(_wino);
         _uiScript.UpdateSlider(_wino);
+    }
+
+    void UpdatePower(string key)
+    {
+
     }
 
     void Update()

@@ -247,8 +247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3face707964ba4f9889b014316275e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerCal: 0.01
-  MyPlayer: {fileID: 514402015}
+  powerCal: 0.001
+  PlayersModel: {fileID: 159211074}
+  model: 3
 --- !u!114 &1268001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 161358433}
   - component: {fileID: 161358432}
+  - component: {fileID: 161358434}
   - component: {fileID: 161358431}
   m_Layer: 0
   m_Name: Main Camera
@@ -592,6 +594,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 42.56, y: 0, z: 0}
+--- !u!114 &161358434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161358430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b7bb328fa454da6b7a75d5272d076b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initial: {fileID: 0}
 --- !u!1 &179916169
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +929,7 @@ GameObject:
   - component: {fileID: 513927369}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Nganu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -946,6 +961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc2a776a66374e898007381ae79006f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model: 1
   myEnemie: {fileID: 766825859}
 --- !u!136 &513927370
 CapsuleCollider:
@@ -1021,7 +1037,7 @@ GameObject:
   - component: {fileID: 514402016}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Nganu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1038,6 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc2a776a66374e898007381ae79006f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model: 3
   myEnemie: {fileID: 2042545396}
 --- !u!136 &514402017
 CapsuleCollider:
@@ -1128,7 +1145,7 @@ GameObject:
   - component: {fileID: 766825861}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Nganu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1160,6 +1177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc2a776a66374e898007381ae79006f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model: 0
   myEnemie: {fileID: 513927367}
 --- !u!136 &766825862
 CapsuleCollider:
@@ -1431,8 +1449,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109021390}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.58}
-  m_LocalScale: {x: 9.45, y: 4.37, z: 1}
+  m_LocalPosition: {x: 0, y: 1.02, z: 4.58}
+  m_LocalScale: {x: 9.45, y: 2.12, z: 1}
   m_Children: []
   m_Father: {fileID: 237508602}
   m_RootOrder: 4
@@ -2735,7 +2753,7 @@ GameObject:
   - component: {fileID: 2042545398}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Nganu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2767,6 +2785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc2a776a66374e898007381ae79006f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  model: 2
   myEnemie: {fileID: 514402015}
 --- !u!136 &2042545399
 CapsuleCollider:

@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "561229805787",
+    "firebase_url": "https://freedomgame-d0095.firebaseio.com",
+    "project_id": "freedomgame-d0095",
+    "storage_bucket": "freedomgame-d0095.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561229805787:android:e2f4c0a647b8cb6f",
+        "android_client_info": {
+          "package_name": "com.pengembangsebelah.swiftup.idgamefreedomxo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyLzpzhduZVBCyDEvCyzXlJ9Kds8SnKzA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561229805787-nmsb9ke9h9bjioglnrpmd75ilnmuscmb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

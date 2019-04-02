@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/_GamePlay/_TarikTambang/_Scene/Game.unity
+    guid: e50d00dfb7c80460ba2ba14c526ac864
+  - enabled: 1
+    path: Assets/Sample/Database/MainScene.unity
+    guid: ff93a2a72377aa545a05e77d85026fb3
+  - enabled: 1
     path: Assets/_GamePlay/Scenes/MainMenu.unity
     guid: c5b661ceec8c6497bbd0ccc95ac398c4
   m_configObjects: {}
