@@ -9,4 +9,5 @@ public class PlayerModel
     public string image_url;
     public string name;
     public float power;
+    public string model_char;
 }
