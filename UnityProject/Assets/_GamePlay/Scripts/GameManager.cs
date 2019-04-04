@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static string MYUID = "nulls";
+
     PlayerModel playerModel;
 
     public PlayerModel GetPlayer()
