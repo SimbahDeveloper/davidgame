@@ -1,0 +1,278 @@
+fileFormatVersion: 2
+guid: 9547e91dcc9e01e41b80a9a259ba705d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Bone
+    100002: Cube_012
+    100004: Cube_013
+    100006: Cube_014
+    100008: Cube_015
+    100010: Cube_016
+    100012: Cube_017
+    100014: //RootNode
+    100016: Empty
+    100018: Empty_001
+    100020: foot_L
+    100022: foot_L_001
+    100024: foot_R
+    100026: foot_R_001
+    100028: forearm_L
+    100030: forearm_R
+    100032: hand_L
+    100034: hand_L_001
+    100036: hand_R
+    100038: hand_R_001
+    100040: IKhand_L
+    100042: metarig
+    100044: shin_L
+    100046: shin_L_001
+    100048: shin_R
+    100050: shin_R_001
+    100052: shoulder_L
+    100054: shoulder_R
+    100056: spine_001
+    100058: spine_002
+    100060: spine_003
+    100062: spine_004
+    100064: spine_005
+    100066: spine_007
+    100068: thigh_L
+    100070: thigh_R
+    100072: toe_L
+    100074: toe_R
+    100076: upper_arm_L
+    100078: upper_arm_R
+    400000: Bone
+    400002: Cube_012
+    400004: Cube_013
+    400006: Cube_014
+    400008: Cube_015
+    400010: Cube_016
+    400012: Cube_017
+    400014: //RootNode
+    400016: Empty
+    400018: Empty_001
+    400020: foot_L
+    400022: foot_L_001
+    400024: foot_R
+    400026: foot_R_001
+    400028: forearm_L
+    400030: forearm_R
+    400032: hand_L
+    400034: hand_L_001
+    400036: hand_R
+    400038: hand_R_001
+    400040: IKhand_L
+    400042: metarig
+    400044: shin_L
+    400046: shin_L_001
+    400048: shin_R
+    400050: shin_R_001
+    400052: shoulder_L
+    400054: shoulder_R
+    400056: spine_001
+    400058: spine_002
+    400060: spine_003
+    400062: spine_004
+    400064: spine_005
+    400066: spine_007
+    400068: thigh_L
+    400070: thigh_R
+    400072: toe_L
+    400074: toe_R
+    400076: upper_arm_L
+    400078: upper_arm_R
+    2100000: Material_007
+    2100002: Material_004
+    2100004: Material_005
+    2100006: Material
+    2100008: Material_006
+    2100010: Material_003
+    4300000: Cube_017
+    4300002: Cube_016
+    4300004: Cube_015
+    4300006: Cube_013
+    4300008: Cube_012
+    4300010: Cube_014
+    7400000: Default Take
+    7400002: IdleWaving
+    9500000: //RootNode
+    13700000: Cube_012
+    13700002: Cube_013
+    13700004: Cube_014
+    13700006: Cube_015
+    13700008: Cube_016
+    13700010: Cube_017
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: bda25a0a00259064187fa3a046784af3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_003
+    second: {fileID: 2100000, guid: bda25a0a00259064187fa3a046784af3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_004
+    second: {fileID: 2100000, guid: bda25a0a00259064187fa3a046784af3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_005
+    second: {fileID: 2100000, guid: bda25a0a00259064187fa3a046784af3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_006
+    second: {fileID: 2100000, guid: bda25a0a00259064187fa3a046784af3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_007
+    second: {fileID: 2100000, guid: bda25a0a00259064187fa3a046784af3, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Default Take
+      takeName: Default Take
+      firstFrame: 0
+      lastFrame: 169
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: IdleWaving
+      takeName: IdleWaving
+      firstFrame: 0
+      lastFrame: 169
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
