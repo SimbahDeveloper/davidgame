@@ -99,6 +99,7 @@ public class MainMenuUiHelper : MonoBehaviour
     {
         blockMe.SetActive(false);
         connection.GetComponent<Animator>().Play("OnOut");
+        GameManager._instance.CancelFindRoom();
         cekcon = true;
     }
 

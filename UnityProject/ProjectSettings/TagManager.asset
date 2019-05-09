@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Nganu
+  - DebugText
   layers:
   - Default
   - TransparentFX

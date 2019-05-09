@@ -104,35 +104,14 @@ public class TTManager : MonoBehaviour
                     if ((string)childSnapshot.Child("uid").Value == GameManager.MYUID) {
                         PlayerModel v = new PlayerModel();
                         v.uid = (string)childSnapshot.Child("uid").Value;
-                        v.image_url = (string)childSnapshot.Child("image_url").Value;
                         v.name = (string)childSnapshot.Child("name").Value;
-                        if (e2.Snapshot.Child("power").Value == null)
-                        {
-                            v.power = 0f;
-                        }
-                        else
-                        {
-                            v.power = (float)e2.Snapshot.Child("power").Value;
-                        }
-                        v.model_char = (string)childSnapshot.Child("model_char").Value;
-                        GetComponent<MyDebug>().Log(v.power+" "+ childSnapshot.Key);
+//                        GetComponent<MyDebug>().Log(v.power+" "+ childSnapshot.Key);
                         myModel = (PlayerModel)v;
                     }
                     else if ((string)childSnapshot.Child("uid").Value == enemyUid)
                       {
                           PlayerModel v = new PlayerModel();
                           v.uid = (string) childSnapshot.Child("uid").Value;
-                          v.image_url = (string)childSnapshot.Child("image_url").Value;
-                          v.name = (string)childSnapshot.Child("name").Value;
-                        if (e2.Snapshot.Child("power").Value == null)
-                        {
-                            v.power = 0f;
-                        }
-                        else
-                        {
-                            v.power = (float)e2.Snapshot.Child("power").Value;
-                        }
-                        v.model_char = (string)childSnapshot.Child("model_char").Value;
                           enemyModel =(PlayerModel) v;
                           }
                   }
@@ -145,22 +124,11 @@ public class TTManager : MonoBehaviour
         FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(roomDate).Child(uid).ValueChanged += (object sender2, ValueChangedEventArgs e2) => {
             PlayerModel v = new PlayerModel();
             v.uid = (string)e2.Snapshot.Child("uid").Value;
-            v.image_url = (string)e2.Snapshot.Child("image_url").Value;
             v.name = (string)e2.Snapshot.Child("name").Value;
-            if(e2.Snapshot.Child("power").Value == null)
-            {
-                v.power = 0f;
-            }
-            else
-            {
-                v.power = (float)e2.Snapshot.Child("power").Value;
-            }
-            v.model_char = (string)e2.Snapshot.Child("model_char").Value;
             enemyModel = (PlayerModel)v;
 
             //Update enemy realtime
             EnemyPlayer.UpdateModel(enemyModel);
-            GetComponent<MyDebug>().Log("Enemy Update " + v.power);
         };
     }
 
@@ -171,7 +139,6 @@ public class TTManager : MonoBehaviour
         {
             if (myModel == null) return;
             CanPush = false;
-            power += myModel.power + (PowerMin * Time.deltaTime);
             PlayerUpdatePower(power);
         }
     }
