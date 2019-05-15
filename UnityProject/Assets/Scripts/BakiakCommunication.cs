@@ -5,8 +5,7 @@ using Firebase;
 
 public class BakiakCommunication : MonoBehaviour
 {
-    public GameObject player1;
-    public GameObject player2;
+    public GameObject[] playerObj;
 
     public static BakiakCommunication init = null;
     [SerializeField]
@@ -40,17 +39,45 @@ public class BakiakCommunication : MonoBehaviour
         {
             init = this;
         }
-        ConnectionToRoom(path);
+
+
     }
 
     void ConnectionToRoom(string p)
     {
-        DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(p);
+        for (int i = 0; i < GameManager._instance.UserPlay.Count; i++)
+        {
+           
+            playerObj[i].AddComponent<BakiakPlayerStats>();
+            playerObj[i].GetComponent<BakiakPlayerStats>().UID = GameManager._instance.UserPlay[i];
+            if (GameManager._instance.UserPlay[i] == GameManager._instance.GetPlayer().uid)
+            {
+                if (i == 0)
+                {
+                    Bakiak.BakiakManager.init.PlayGameBakiak(Bakiak.BakiakCamera.PLAYERZONEBAKIAK.PLAYER1);
+                }else if (i == 1)
+                {
+                    Bakiak.BakiakManager.init.PlayGameBakiak(Bakiak.BakiakCamera.PLAYERZONEBAKIAK.PLAYER2);
+                }
+                else if (i == 2)
+                {
+                    Bakiak.BakiakManager.init.PlayGameBakiak(Bakiak.BakiakCamera.PLAYERZONEBAKIAK.PLAYER3);
+                }
+                else if (i == 3)
+                {
+                    Bakiak.BakiakManager.init.PlayGameBakiak(Bakiak.BakiakCamera.PLAYERZONEBAKIAK.PLAYER4);
+                }
+            }
+        }
     }
 
     void Start()
     {
-        
+#if UNITY_EDITOR
+        Bakiak.BakiakManager.init.PlayGameBakiak(Bakiak.BakiakCamera.PLAYERZONEBAKIAK.PLAYER1);
+#else
+        ConnectionToRoom(GameManager._instance.GetPlayer().uid);
+#endif
     }
     void Update()
     {

@@ -1075,7 +1075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13000001, y: 0.42045003}
   m_AnchorMax: {x: 0.87428576, y: 0.58081186}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0.00012207031}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
   m_SizeDelta: {x: 0.00012207, y: -0.000076294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220533403
@@ -2559,7 +2559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.21800001}
-  m_AnchoredPosition: {x: 0.0012512207, y: -0.0059814453}
+  m_AnchoredPosition: {x: 0.0012512207, y: -0.005859375}
   m_SizeDelta: {x: -177.97, y: 192.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791003154
@@ -3881,6 +3881,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muchPlayerCanPlayTogetherInServer: 2
+  GameType:
+  - BAKIAK
+  UserPlay: []
   myRoom: none
 --- !u!1 &1284715848
 GameObject:
@@ -5299,7 +5302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.20011729, y: 0.15749119}
   m_AnchorMax: {x: 0.7978828, y: 0.8717121}
-  m_AnchoredPosition: {x: 0, y: -4.0996704}
+  m_AnchoredPosition: {x: 0, y: -4.0996094}
   m_SizeDelta: {x: 2.199997, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1710871104
@@ -5723,7 +5726,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -195.002, y: 62.999756}
+  m_AnchoredPosition: {x: -195.002, y: 63}
   m_SizeDelta: {x: 100.119995, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1809864282

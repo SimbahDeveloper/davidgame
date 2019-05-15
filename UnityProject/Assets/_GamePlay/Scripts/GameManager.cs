@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using SimpleJSON;
 
 
@@ -21,7 +22,12 @@ class Rooms
 public class GameManager : MonoBehaviour
 {
     public int muchPlayerCanPlayTogetherInServer = 2;
-    public static string MYUID = "nulls";
+    public String[] GameType;
+
+    [SerializeField]
+    public List<String> UserPlay;
+    [SerializeField]
+    public string MYUID ;
     PlayerModel playerModel;
     bool OnRoom = false;
 
@@ -40,11 +46,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
         FirebaseDatabase.DefaultInstance.GetReference("game/users").Child(auth.CurrentUser.UserId).GetValueAsync().ContinueWith(task => {
-            if (task.IsFaulted)
-            {
-                GameObject.FindWithTag("DebugText").GetComponent<Text>().text += " ERRROR DB ";
-            }
-            else if (task.IsCompleted)
+if (task.IsCompleted)
             {
                 DataSnapshot snapshot = task.Result;
                 playerModel.name = (string)snapshot.Child("name").Value;
@@ -68,7 +70,44 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(this);
         }
+        MYUID = "nulls";
+        UserPlay = new List<string>();
     }
+    bool Hayok = false;
+    void MakeGame()
+    {
+        Hayok = true;
+        DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).Child("Play");
+        if (CanMakeGame)
+        {
+            for (int i = 0; i < GameType.Length; i++)
+            {
+                string temp = GameType[i];
+                int randomIndex = UnityEngine.Random.Range(i, GameType.Length);
+                GameType[i] = GameType[randomIndex];
+                GameType[randomIndex] = temp;
+            }
+
+            for (int i = 0; i < UserPlay.Count; i++)
+            {
+                string temp = UserPlay[i];
+                int randomIndex = UnityEngine.Random.Range(i, UserPlay.Count);
+                UserPlay[i] = UserPlay[randomIndex];
+                UserPlay[randomIndex] = temp;
+            }
+            for (int i = 0; i < UserPlay.Count; i++)
+            {
+                reference.Child("Player").Child("Player" + (i + 1)).SetValueAsync(UserPlay[i]);
+            }
+            for (int i = 0; i < GameType.Length; i++)
+            {
+                reference.Child("Game" + i + 1).SetValueAsync(GameType[i]);
+            }
+            reference.Child("STATUS").SetValueAsync("READY");
+            CanMakeGame = false;
+        }
+    }
+
     public void CheckRooms()
     {
         PesanTO("Check Room");
@@ -76,11 +115,7 @@ public class GameManager : MonoBehaviour
 #if PLATFORM_ANDROID
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
         FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").GetValueAsync().ContinueWith(task => {
-            if (task.IsFaulted)
-            {
-                GameObject.FindWithTag("DebugText").GetComponent<Text>().text += " ERRROR DB ";
-            }
-            else if (task.IsCompleted)
+if (task.IsCompleted)
             {
                 DataSnapshot snapshot = task.Result;
 
@@ -92,7 +127,6 @@ public class GameManager : MonoBehaviour
                     {
                         if (item.ChildrenCount < max)
                         {
-                            GameObject.FindWithTag("DebugText").GetComponent<Text>().text += " " + item.Key;
                             RoomCanJoint.Add(item.Key);
                         }
 
@@ -100,12 +134,10 @@ public class GameManager : MonoBehaviour
 
                     if(RoomCanJoint.Count > 0)
                     {
-                        GameObject.FindWithTag("DebugText").GetComponent<Text>().text += "Joint "+ RoomCanJoint[0];
                         JointRoom(RoomCanJoint[0]);
                     }
                     else
                     {
-                        GameObject.FindWithTag("DebugText").GetComponent<Text>().text += "Create";
                         CreateRoom();
                     }
                 }
@@ -127,7 +159,7 @@ public class GameManager : MonoBehaviour
     {
 #if UNITY_ANDROID
         #region createRoom
-        OnRoom = true;
+        addedUser = true;
         if (playerModel.uid == null) { CancelFindRoom();return; }
         //var date = DateTime.Now.TimeOfDay;
         int ff = UnityEngine.Random.Range(0, 999);
@@ -138,6 +170,7 @@ public class GameManager : MonoBehaviour
         reference.Child("name").SetValueAsync(playerModel.name);
         reference.Child("roomMaster").SetValueAsync(true);
         RoomMaster = true;
+        OnRoom = true;
         #endregion
 #endif
 
@@ -146,12 +179,13 @@ public class GameManager : MonoBehaviour
     {
 #if PLATFORM_ANDROID
         #region joint
-        OnRoom = true;
         myRoom = ro;
+        addedUser = true;
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(ro).Child(playerModel.uid);
         reference.Child("uid").SetValueAsync(playerModel.uid);
         reference.Child("name").SetValueAsync(playerModel.name);
         reference.Child("roomMaster").SetValueAsync(false);
+        OnRoom = true;
         #endregion joint
 #endif
     }
@@ -190,7 +224,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Log("--------dassssssssssss--------");
+
         //var _room = new Room();
         //var _dplayer  = new List<PlayerModel>();
 
@@ -203,7 +237,8 @@ public class GameManager : MonoBehaviour
         //_room.player.Add(_player);
         //var d = JsonUtility.ToJson(_dplayer);
     }
-
+    bool CanMakeGame = false;
+    bool addedUser = true;
     // Update is called once per frame
     void Update()
     {
@@ -222,17 +257,52 @@ public class GameManager : MonoBehaviour
                     DataSnapshot snapshot = task.Result;
                     if (snapshot.ChildrenCount == muchPlayerCanPlayTogetherInServer)
                     {
-                        PlayGame();
+                        List<string> _UserPlay = new List<string>();
+
+                        foreach (var item in snapshot.Children)
+                        {
+                            _UserPlay.Add(item.Key);
+                            if (item.Key == playerModel.uid)
+                            {
+                                CanMakeGame = true;
+                            }
+                        }
+                        if (addedUser) {
+                            addedUser = false;
+                            for (int i = 0; i < muchPlayerCanPlayTogetherInServer; i++)
+                            {
+                                UserPlay.Add(_UserPlay[i]);
+                            }
+                        }
+                        MakeGame();
                     }
                 }
             });
             #endregion creatroom
+        }
+
+        if (Hayok)
+        {
+            FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).Child("Play").GetValueAsync().ContinueWith(task =>
+            {
+                if (task.IsCompleted)
+                {
+                    DataSnapshot sn = task.Result;
+                  
+                    if (sn.Child("STATUS").Value.ToString()  == "READY")
+                    {
+                        Hayok = false;
+                        PlayGame();
+                    }
+                }
+            });
         }
 #endif
     }
 
     void PlayGame()
     {
-        GameObject.FindWithTag("DebugText").GetComponent<Text>().text += "PLAY GAME";
+        AudioHelper.init.StopMusic();
+        SceneManager.LoadScene("DesaTambangBakiak", LoadSceneMode.Single);
     }
 }
