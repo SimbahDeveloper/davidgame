@@ -13,6 +13,16 @@ public class AudioHelper : MonoBehaviour
     public AudioClip Click;
     public AudioClip MenuMusic;
 
+    public static AudioHelper init;
+
+    private void Awake()
+    {
+        if (init == null)
+        {
+            init = this;
+        }
+    }
+
     public float GetVolumeSFX()
     {
         return SFX.volume;
@@ -41,6 +51,14 @@ public class AudioHelper : MonoBehaviour
                 break;
         }
 
+    }
+
+    public void StopMusic()
+    {
+        if (Music.isPlaying)
+        {
+            Music.Stop();
+        }
     }
     public void SetSFXVolume(float val)
     {
