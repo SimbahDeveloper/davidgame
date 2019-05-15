@@ -1,0 +1,42 @@
+fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 48becf67b8088134ca20f24639c83a92
+=======
+<<<<<<< HEAD
+guid: cd9ec2ba924774642b8fb8e5e6d42b3c
+=======
+guid: 21827a508239e4358a618da54e54e623
+labels:
+- gpsr
+>>>>>>> f55243764e8e1fd483a7ced00fa1a34a5e469b95
+>>>>>>> d54377532ae2fc163b4daaa34c6d26f06725fd02
+PluginImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  iconMap: {}
+  executionOrder: {}
+  defineConstraints: []
+  isPreloaded: 0
+  isOverridable: 0
+  isExplicitlyReferenced: 0
+  validateReferences: 1
+  platformData:
+  - first:
+      Android: Android
+    second:
+      enabled: 1
+      settings: {}
+  - first:
+      Any: 
+    second:
+      enabled: 0
+      settings: {}
+  - first:
+      Editor: Editor
+    second:
+      enabled: 0
+      settings:
+        DefaultValueInitialized: true
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
