@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using SimpleJSON;
 
 
@@ -22,14 +21,8 @@ class Rooms
 public class GameManager : MonoBehaviour
 {
     public int muchPlayerCanPlayTogetherInServer = 2;
-    public String[] GameType;
-
-    [SerializeField]
-    public List<String> UserPlay;
-    [SerializeField]
-    public string MYUID ;
+    public static string MYUID = "nulls";
     PlayerModel playerModel;
-    bool OnRoom = false;
 
     public PlayerModel GetPlayer()
     {
@@ -40,21 +33,22 @@ public class GameManager : MonoBehaviour
     GameObject panelConect;
     IEnumerator GetData()
     {
-#if PLATFORM_ANDROID
-        #region getUser
         Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
         yield return new WaitForEndOfFrame();
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
         FirebaseDatabase.DefaultInstance.GetReference("game/users").Child(auth.CurrentUser.UserId).GetValueAsync().ContinueWith(task => {
-if (task.IsCompleted)
+            if (task.IsFaulted)
+            {
+                GameObject.FindWithTag("DebugText").GetComponent<Text>().text += " ERRROR DB ";
+            }
+            else if (task.IsCompleted)
             {
                 DataSnapshot snapshot = task.Result;
                 playerModel.name = (string)snapshot.Child("name").Value;
                 playerModel.uid = (string)snapshot.Child("uid").Value;
+                // Do something with snapshot...
             }
         });
-        #endregion getUser
-#endif
     }
     private void Awake()
     {
@@ -69,6 +63,7 @@ if (task.IsCompleted)
         {
             _instance = this;
             DontDestroyOnLoad(this);
+<<<<<<< HEAD
         }
         MYUID = "nulls";
         UserPlay = new List<string>();
@@ -106,41 +101,41 @@ if (task.IsCompleted)
             }
             reference.Child("STATUS").SetValueAsync("READY");
             CanMakeGame = false;
+=======
+>>>>>>> 185332a408d309d09075422d72f96c3ea9bedc04
         }
     }
-
     public void CheckRooms()
     {
         PesanTO("Check Room");
-        #region android chekroom
-#if PLATFORM_ANDROID
+        GameObject.FindWithTag("DebugText").GetComponent<Text>().text += " CHECK ROOM ";
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
+        GameObject.FindWithTag("DebugText").GetComponent<Text>().text += " PATH ROOM ";
         FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").GetValueAsync().ContinueWith(task => {
-if (task.IsCompleted)
+            if (task.IsFaulted)
+            {
+                GameObject.FindWithTag("DebugText").GetComponent<Text>().text += " ERRROR DB ";
+            }
+            else if (task.IsCompleted)
             {
                 DataSnapshot snapshot = task.Result;
 
                 if (snapshot.Exists)
                 {
-                    List<String> RoomCanJoint = new List<String>();
-                    int max = muchPlayerCanPlayTogetherInServer;
+
+                    //GameObject.FindWithTag("DebugText").GetComponent<Text>().text += " " + snapshot.Value;
                     foreach (var item in snapshot.Children)
                     {
-                        if (item.ChildrenCount < max)
-                        {
-                            RoomCanJoint.Add(item.Key);
-                        }
-
+                        GameObject.FindWithTag("DebugText").GetComponent<Text>().text += " " + item.Key;
                     }
 
-                    if(RoomCanJoint.Count > 0)
-                    {
-                        JointRoom(RoomCanJoint[0]);
-                    }
-                    else
-                    {
-                        CreateRoom();
-                    }
+                    //if (snapshot.ChildrenCount == 0)
+                    //{
+                    //    CreateRoom(0);
+                    //}
+                    //var _js = snapshot.GetRawJsonValue();
+                    //var gg = JsonUtility.FromJson<Rooms>(_js);
+                    //GameObject.FindWithTag("DebugText").GetComponent<Text>().text += " JAJAJ "+gg.rooms.Count;
                 }
                 else
                 {
@@ -150,17 +145,12 @@ if (task.IsCompleted)
 
             }
         });
-#endif
-        #endregion android chekroom
     }
 
     bool RoomMaster = false;
     public string myRoom;
     public void CreateRoom()
     {
-#if UNITY_ANDROID
-        #region createRoom
-        addedUser = true;
         if (playerModel.uid == null) { CancelFindRoom();return; }
         //var date = DateTime.Now.TimeOfDay;
         int ff = UnityEngine.Random.Range(0, 999);
@@ -171,29 +161,16 @@ if (task.IsCompleted)
         reference.Child("name").SetValueAsync(playerModel.name);
         reference.Child("roomMaster").SetValueAsync(true);
         RoomMaster = true;
-        OnRoom = true;
-        #endregion
-#endif
 
     }
-    public void JointRoom(string ro)
+    public void JointRoom()
     {
-#if PLATFORM_ANDROID
-        #region joint
-        myRoom = ro;
-        addedUser = true;
-        DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(ro).Child(playerModel.uid);
-        reference.Child("uid").SetValueAsync(playerModel.uid);
-        reference.Child("name").SetValueAsync(playerModel.name);
-        reference.Child("roomMaster").SetValueAsync(false);
-        OnRoom = true;
-        #endregion joint
-#endif
+        PesanTO("create room");
     }
     public void PesanTO(string huh)
     {
-      //  var fu = panelConect.GetComponentsInChildren<Transform>();
-    //    fu[4].GetComponent<Text>().text = huh;
+        var fu = panelConect.GetComponentsInChildren<Transform>();
+        fu[4].GetComponent<Text>().text = huh;
     }
 
     public void StartGame(GameObject panelConnection)
@@ -204,28 +181,18 @@ if (task.IsCompleted)
     }
     public void CancelFindRoom()
     {
-#if PLATFORM_ANDROID
-        #region room
-        OnRoom = false;
         if (RoomMaster)
         {
             RoomMaster = false;
             DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).Child(playerModel.uid);
             reference.RemoveValueAsync();
         }
-        else
-        {
-            DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).Child(playerModel.uid);
-            reference.RemoveValueAsync();
-        }
-        #endregion room
-#endif
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //Debug.Log("--------dassssssssssss--------");
         //var _room = new Room();
         //var _dplayer  = new List<PlayerModel>();
 
@@ -238,6 +205,7 @@ if (task.IsCompleted)
         //_room.player.Add(_player);
         //var d = JsonUtility.ToJson(_dplayer);
     }
+<<<<<<< HEAD
     bool CanMakeGame = false;
     bool addedUser = true;
     bool push = true;
@@ -304,8 +272,12 @@ if (task.IsCompleted)
     }
 
     void PlayGame()
+=======
+
+    // Update is called once per frame
+    void Update()
+>>>>>>> 185332a408d309d09075422d72f96c3ea9bedc04
     {
-        AudioHelper.init.StopMusic();
-        SceneManager.LoadScene("DesaTambangBakiak", LoadSceneMode.Single);
+        
     }
 }
