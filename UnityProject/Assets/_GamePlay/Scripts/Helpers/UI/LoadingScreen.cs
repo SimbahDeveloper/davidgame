@@ -82,8 +82,6 @@ public class LoadingScreen : MonoBehaviour
 
     public void SetKomplitLogin()
     {
-        addField = 0.1f;
-        itsLogin = true;
         login.SetActive(false);
         waitLogin = false;
         isLoading = true;

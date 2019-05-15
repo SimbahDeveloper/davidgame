@@ -35,13 +35,13 @@ public class MainMenuUiHelper : MonoBehaviour
         {
             if (leaderboard.activeInHierarchy&&!kelu)
             {
-             //   kelu = true;
-               // leaderboard.GetComponent<Animator>().Play("LederIn");
+                kelu = true;
+                leaderboard.GetComponent<Animator>().Play("LederIn");
             }
             else
             {
-                //kelu = true;
-                //leaderboard.SetActive(true);
+                kelu = true;
+                leaderboard.SetActive(true);
             }
 
             Debug.Log("right");
@@ -55,8 +55,8 @@ public class MainMenuUiHelper : MonoBehaviour
             // move left
             if (kelu)
             {
-                //kelu = false;
-                //leaderboard.GetComponent<Animator>().Play("LeaderOut");
+                kelu = false;
+                leaderboard.GetComponent<Animator>().Play("LeaderOut");
             }
 
             Debug.Log("left");
@@ -92,10 +92,6 @@ public class MainMenuUiHelper : MonoBehaviour
         escapeKill = true;
         blockMe.SetActive(true);
         connection.SetActive(true);
-    }
-
-    public void OnlinePlay()
-    {
         GameObject.Find("Scripts").GetComponent<GameManager>().StartGame(connection);
     }
 
