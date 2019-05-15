@@ -72,6 +72,7 @@ if (task.IsCompleted)
         }
         MYUID = "nulls";
         UserPlay = new List<string>();
+        myRoom = "none";
     }
     bool Hayok = false;
     void MakeGame()
@@ -154,7 +155,7 @@ if (task.IsCompleted)
     }
 
     bool RoomMaster = false;
-    public string myRoom = "none";
+    public string myRoom;
     public void CreateRoom()
     {
 #if UNITY_ANDROID
@@ -239,12 +240,14 @@ if (task.IsCompleted)
     }
     bool CanMakeGame = false;
     bool addedUser = true;
-    // Update is called once per frame
+    bool push = true;
     void Update()
     {
+
 #if PLATFORM_ANDROID
-        if (OnRoom)
+        if (OnRoom&&push)
         {
+            push = false;
             #region creatroom
             DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
             FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).GetValueAsync().ContinueWith(task => {

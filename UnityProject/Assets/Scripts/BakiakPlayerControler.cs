@@ -15,6 +15,8 @@ namespace Bakiak
         [SerializeField]
         Vector3 p1Zone;
         Vector3 p2Zone;
+        Vector3 playerPos;
+        Vector3 _playerPos;
         bool falling;
 
         bool left ;
@@ -22,6 +24,8 @@ namespace Bakiak
         // Start is called before the first frame update
         void Start()
         {
+            playerPos = gameObject.transform.position;
+            _playerPos = playerPos;
             p1Zone = new Vector3(Screen.width * 0.5f,Screen.height,0f);
             p2Zone =new Vector3(Screen.width, Screen.height, 0f);
             firstime = true;
@@ -50,17 +54,17 @@ namespace Bakiak
         Vector3 oldPos;
         private void LateUpdate()
         {
-            if (oldPos != gameObject.transform.position)
+            if (oldPos != _playerPos)
             {
-                oldPos = gameObject.transform.position;
+                oldPos = _playerPos;
                 DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game")
                 .Child("rooms")
                     .Child(GameManager._instance.myRoom)
                 .Child(GetComponent<BakiakPlayerStats>()
                     .UID).Child("Bakiak");
-                reference.Child("x").SetValueAsync(gameObject.transform.position.x);
-                reference.Child("y").SetValueAsync(gameObject.transform.position.y);
-                reference.Child("z").SetValueAsync(gameObject.transform.position.z);
+                reference.Child("x").SetValueAsync((double)_playerPos.x);
+                reference.Child("y").SetValueAsync((double)_playerPos.y);
+                reference.Child("z").SetValueAsync((double)_playerPos.z);
             }
         }
         Vector2 firstPressPos, secondPressPos, currentSwipe;
@@ -111,14 +115,14 @@ namespace Bakiak
                 if (touch.position.x <= g)
                 {
                     left = false;
-                    gameObject.transform.position += new Vector3(ss, 0f, 0f);
+                    _playerPos += new Vector3(ss, 0f, 0f);
                     BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                 }
                 else if (touch.position.x >= g)
                 {
                     left = true;
                     Debug.Log("Right");
-                    gameObject.transform.position += new Vector3(ss, 0f, 0f);
+                    _playerPos += new Vector3(ss, 0f, 0f);
                     BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                 }
 
@@ -130,7 +134,7 @@ namespace Bakiak
                     if (left)
                     {
                         left = false;
-                        gameObject.transform.position += new Vector3(ss, 0f, 0f);
+                        _playerPos += new Vector3(ss, 0f, 0f);
                         BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                     }
                     else
@@ -146,7 +150,7 @@ namespace Bakiak
                     {
                         left = true;
                         Debug.Log("Right");
-                        gameObject.transform.position += new Vector3(ss, 0f, 0f);
+                        _playerPos += new Vector3(ss, 0f, 0f);
                         BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                     }
                     else
