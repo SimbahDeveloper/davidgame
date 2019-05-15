@@ -100,20 +100,20 @@ public class TTManager : MonoBehaviour
                 int y = 0;
                 foreach (var childSnapshot in e2.Snapshot.Children)
                   {
-                    GetComponent<MyDebug>().Log((string)childSnapshot.Child("uid").Value);
-                    if ((string)childSnapshot.Child("uid").Value == GameManager.MYUID) {
-                        PlayerModel v = new PlayerModel();
-                        v.uid = (string)childSnapshot.Child("uid").Value;
-                        v.name = (string)childSnapshot.Child("name").Value;
-//                        GetComponent<MyDebug>().Log(v.power+" "+ childSnapshot.Key);
-                        myModel = (PlayerModel)v;
-                    }
-                    else if ((string)childSnapshot.Child("uid").Value == enemyUid)
-                      {
-                          PlayerModel v = new PlayerModel();
-                          v.uid = (string) childSnapshot.Child("uid").Value;
-                          enemyModel =(PlayerModel) v;
-                          }
+//                    GetComponent<MyDebug>().Log((string)childSnapshot.Child("uid").Value);
+//                    if ((string)childSnapshot.Child("uid").Value == GameManager._instance.GetPlayer().uid) {
+//                        PlayerModel v = new PlayerModel();
+//                        v.uid = (string)childSnapshot.Child("uid").Value;
+//                        v.name = (string)childSnapshot.Child("name").Value;
+////                        GetComponent<MyDebug>().Log(v.power+" "+ childSnapshot.Key);
+                    //    myModel = (PlayerModel)v;
+                    //}
+                    //else if ((string)childSnapshot.Child("uid").Value == enemyUid)
+                      //{
+                          //PlayerModel v = new PlayerModel();
+                          //v.uid = (string) childSnapshot.Child("uid").Value;
+                          //enemyModel =(PlayerModel) v;
+                          //}
                   }
               }
           };
@@ -145,7 +145,7 @@ public class TTManager : MonoBehaviour
 
     void PlayerUpdatePower(float val)
     { 
-        DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(roomDate).Child(GameManager.MYUID);
+        DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(roomDate).Child(GameManager._instance.GetPlayer().uid);
         reference.Child("power").SetValueAsync(val);
         MyPlayer.UpdateModel(myModel);
         GetComponent<MyDebug>().Log("Update"+val);
