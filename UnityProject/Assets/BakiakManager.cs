@@ -15,14 +15,14 @@ namespace Bakiak
             {
                 init = this;
             }
-            //ZonaGame.SetActive(false);
+       //     ZonaGame.SetActive(false);
         }
 
-         void PlayGameBakiak(BakiakCamera.PLAYERZONEBAKIAK p)
+        public void PlayGameBakiak(BakiakCamera.PLAYERZONEBAKIAK p)
         {
+        //    ZonaGame.SetActive(true);
             BakiakCamera.init.SetCameraTo(p);
             SetMyPlayer(p);
-
         }
 
         void SetMyPlayer(BakiakCamera.PLAYERZONEBAKIAK p)
@@ -46,11 +46,6 @@ namespace Bakiak
                     myPlayer[3].AddComponent<BakiakPlayerControler>();
                     break;
             }
-        }
-
-        void Start()
-        {
-            PlayGameBakiak(BakiakCamera.PLAYERZONEBAKIAK.PLAYER1);
         }
     }
 }
