@@ -305,7 +305,7 @@ if (task.IsCompleted)
 
     void PlayGame()
     {
-        AudioHelper.init.StopMusic();
+//        AudioHelper.init.StopMusic();
         SceneManager.LoadScene("DesaTambangBakiak", LoadSceneMode.Single);
     }
 }
