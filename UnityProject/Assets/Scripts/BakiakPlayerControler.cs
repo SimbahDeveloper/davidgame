@@ -11,6 +11,7 @@ namespace Bakiak
         public float timeWakeUp = 5f;
         float kuy;
         public bool isPlaying = true;
+        public int scoreTotalWalk = 200;
         
         [SerializeField]
         Vector3 p1Zone;
@@ -42,11 +43,12 @@ namespace Bakiak
         {
             if (falling)
             {
-                kuy -= Time.deltaTime;
-                if (kuy <= 0)
+                kuy += Time.deltaTime;
+                UIGame.init.Stuned(kuy);
+                if (kuy >= timeWakeUp)
                 {
+                    UIGame.init.StunedDone();
                     GameObject.Find("Debug").GetComponent<UnityEngine.UI.Text>().text += "Ayo Kejar Musuh";
-                    //kuy = timeWakeUp;
                     falling = false;
                 }
             }
@@ -61,10 +63,11 @@ namespace Bakiak
                 .Child("rooms")
                     .Child(GameManager._instance.myRoom)
                 .Child(GetComponent<BakiakPlayerStats>()
-                    .UID).Child("Bakiak");
-                reference.Child("x").SetValueAsync((double)_playerPos.x);
-                reference.Child("y").SetValueAsync((double)_playerPos.y);
-                reference.Child("z").SetValueAsync((double)_playerPos.z);
+                    .UID);
+                reference.Child("Bakiak").Child("x").SetValueAsync((double)_playerPos.x);
+                reference.Child("Bakiak").Child("y").SetValueAsync((double)_playerPos.y);
+                reference.Child("Bakiak").Child("z").SetValueAsync((double)_playerPos.z);
+                reference.Child("MyScore").SetValueAsync(GameManager._instance.MyScore);
             }
         }
         Vector2 firstPressPos, secondPressPos, currentSwipe;
@@ -114,12 +117,14 @@ namespace Bakiak
                 firstime = false;
                 if (touch.position.x <= g)
                 {
+                    GameManager._instance.MyScore += scoreTotalWalk;
                     left = false;
                     _playerPos += new Vector3(ss, 0f, 0f);
                     BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                 }
                 else if (touch.position.x >= g)
                 {
+                    GameManager._instance.MyScore += scoreTotalWalk;
                     left = true;
                     Debug.Log("Right");
                     _playerPos += new Vector3(ss, 0f, 0f);
@@ -133,13 +138,14 @@ namespace Bakiak
                 {
                     if (left)
                     {
+                        GameManager._instance.MyScore += scoreTotalWalk;
                         left = false;
                         _playerPos += new Vector3(ss, 0f, 0f);
                         BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                     }
                     else
                     {
-                        kuy = timeWakeUp;
+                        kuy = 0;
                         GameObject.Find("Debug").GetComponent<UnityEngine.UI.Text>().text += "Falling " + timeWakeUp + "s";
                         falling = true;
                     }
@@ -148,6 +154,7 @@ namespace Bakiak
                 {
                     if (!left)
                     {
+                        GameManager._instance.MyScore += scoreTotalWalk;
                         left = true;
                         Debug.Log("Right");
                         _playerPos += new Vector3(ss, 0f, 0f);
@@ -155,7 +162,7 @@ namespace Bakiak
                     }
                     else
                     {
-                        kuy = timeWakeUp;
+                        kuy = 0;
                         GameObject.Find("Debug").GetComponent<UnityEngine.UI.Text>().text += "Falling " + timeWakeUp + "s";
                         falling = true;
                     }
