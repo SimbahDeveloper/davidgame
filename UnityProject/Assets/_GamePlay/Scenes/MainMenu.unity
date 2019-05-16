@@ -3883,6 +3883,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muchPlayerCanPlayTogetherInServer: 2
+  GameType:
+  - BAKIAK
+  - PINANG
+  - TAMBANG
+  UserPlay: []
+  MYUID: 
+  myRoom: 
 --- !u!1 &1284715848
 GameObject:
   m_ObjectHideFlags: 0

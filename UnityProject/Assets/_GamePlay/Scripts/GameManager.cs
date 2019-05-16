@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public int muchPlayerCanPlayTogetherInServer = 2;
     public String[] GameType;
 
+    public int MyScore;
+
     [SerializeField]
     public List<String> UserPlay;
     [SerializeField]
@@ -73,10 +75,21 @@ if (task.IsCompleted)
         MYUID = "nulls";
         UserPlay = new List<string>();
         myRoom = "none";
+        MyScore = 0;
+    }
+
+    void ResetScore()
+    {
+        MyScore = 0;
+    }
+    void AddScore(int much)
+    {
+        MyScore += much;
     }
     bool Hayok = false;
     void MakeGame()
     {
+        push = true;
         Hayok = true;
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).Child("Play");
         if (CanMakeGame)
@@ -172,6 +185,7 @@ if (task.IsCompleted)
         reference.Child("roomMaster").SetValueAsync(true);
         RoomMaster = true;
         OnRoom = true;
+        push = true;
         #endregion
 #endif
 
@@ -187,6 +201,7 @@ if (task.IsCompleted)
         reference.Child("name").SetValueAsync(playerModel.name);
         reference.Child("roomMaster").SetValueAsync(false);
         OnRoom = true;
+        push = true;
         #endregion joint
 #endif
     }
@@ -245,9 +260,8 @@ if (task.IsCompleted)
     {
 
 #if PLATFORM_ANDROID
-        if (OnRoom&&push)
+        if (OnRoom)
         {
-            push = false;
             #region creatroom
             DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
             FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).GetValueAsync().ContinueWith(task => {
@@ -260,6 +274,7 @@ if (task.IsCompleted)
                     DataSnapshot snapshot = task.Result;
                     if (snapshot.ChildrenCount == muchPlayerCanPlayTogetherInServer)
                     {
+                        OnRoom = false;
                         List<string> _UserPlay = new List<string>();
 
                         foreach (var item in snapshot.Children)
@@ -291,11 +306,13 @@ if (task.IsCompleted)
                 if (task.IsCompleted)
                 {
                     DataSnapshot sn = task.Result;
-                  
                     if (sn.Child("STATUS").Value.ToString()  == "READY")
                     {
-                        Hayok = false;
-                        PlayGame();
+                        if (push)
+                        {
+                            Hayok = false;
+                            PlayGame();
+                        }
                     }
                 }
             });
@@ -305,7 +322,7 @@ if (task.IsCompleted)
 
     void PlayGame()
     {
-//        AudioHelper.init.StopMusic();
+        AudioHelper.init.StopMusic();
         SceneManager.LoadScene("DesaTambangBakiak", LoadSceneMode.Single);
     }
 }
