@@ -11,7 +11,7 @@ public class UIGame : MonoBehaviour
     public Text NameUI;
     public GameObject Stunes;
 
-    void Start()
+    void Awake()
     {
         if (init == null)
         {
