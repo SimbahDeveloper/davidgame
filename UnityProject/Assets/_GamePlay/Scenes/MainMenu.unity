@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.29602176, g: 0.2457422, b: 0.23109636, a: 1}
+  m_IndirectSpecularColor: {r: 0.29596823, g: 0.24581721, b: 0.2310952, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -505,7 +505,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Practice
+  m_Text: 'Play
 
     with random'
 --- !u!222 &43934991
@@ -772,7 +772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &193241273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -856,16 +856,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201846861}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 486.3}
-  m_LocalScale: {x: 6.733259, y: 4.655153, z: 1.2967}
+  m_LocalPosition: {x: 0, y: 0, z: 311}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477385331}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 7.2644043, y: 32.36914}
-  m_SizeDelta: {x: 134.4, y: 98.100006}
+  m_AnchoredPosition: {x: -73, y: -68}
+  m_SizeDelta: {x: 676.95, y: 494.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &201846863
 MonoBehaviour:
@@ -889,7 +889,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8ae0df89cb0ced94babeb45ec2e07245, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3758,7 +3758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1169160498}
   m_LocalRotation: {x: 0.00450385, y: -0.20885366, z: 0.061442968, w: 0.9760044}
-  m_LocalPosition: {x: 2.75, y: 7.12, z: -7.29}
+  m_LocalPosition: {x: 1.16, y: 6.97, z: -4.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3887,6 +3887,7 @@ MonoBehaviour:
   - BAKIAK
   - PINANG
   - TAMBANG
+  MyScore: 0
   UserPlay: []
   MYUID: 
   myRoom: 
@@ -5119,8 +5120,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -163, y: -477}
-  m_SizeDelta: {x: -600, y: -980}
+  m_AnchoredPosition: {x: -137.8, y: -466.1}
+  m_SizeDelta: {x: -521.43, y: -987.53}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1661580503
 MonoBehaviour:
@@ -5708,8 +5709,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 156, y: -477.00012}
-  m_SizeDelta: {x: -600, y: -980}
+  m_AnchoredPosition: {x: 156, y: -464.1}
+  m_SizeDelta: {x: -510.48, y: -980}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1809864282
 MonoBehaviour:
