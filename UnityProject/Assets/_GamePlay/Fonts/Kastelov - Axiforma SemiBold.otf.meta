@@ -1,0 +1,34 @@
+fileFormatVersion: 2
+guid: 8ee4885d886a86346b9af6334beff728
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Axiforma
+  fontNames:
+  - Axiforma
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8c653350fa1840b4aa0a2c33b4164c6b, type: 3}
+  - {fileID: 12800000, guid: 0140f0c18e6e2ca46bfb1483d179c700, type: 3}
+  - {fileID: 12800000, guid: 0a568e02ad13675438fd7b09a921b80e, type: 3}
+  - {fileID: 12800000, guid: 44f6c7753dadba44182601af16d3fd93, type: 3}
+  - {fileID: 12800000, guid: 6a42dc97c02300945b6fc9ae67a2b912, type: 3}
+  - {fileID: 12800000, guid: 3f071339b00e7284fa7813a230323400, type: 3}
+  - {fileID: 12800000, guid: 869b728a22e3f8543a9ddd1667e4112e, type: 3}
+  - {fileID: 12800000, guid: 6feadb2bb20ade94abbf13caaa9cdeb8, type: 3}
+  - {fileID: 12800000, guid: 00a7483c03f540d4d9ee594547559479, type: 3}
+  - {fileID: 12800000, guid: 0181c51d1119d9949bcc2381842c2cea, type: 3}
+  - {fileID: 12800000, guid: 3d4cbdbd69b6674458320dc949aed11c, type: 3}
+  - {fileID: 12800000, guid: 4a5eaa9ec8abdcb45bff2f5794f51d7c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
