@@ -34,6 +34,7 @@ public class TTManager : MonoBehaviour
 
     private void Start()
     {
+        MyDebug.init.Log(roomDate);
         GetDatas(roomDate);
     }
 

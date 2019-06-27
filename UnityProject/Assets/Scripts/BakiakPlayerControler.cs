@@ -44,11 +44,10 @@ namespace Bakiak
             if (falling)
             {
                 kuy += Time.deltaTime;
-                UIGame.init.Stuned(kuy);
+                //UIGame.init.Stuned(kuy);
                 if (kuy >= timeWakeUp)
                 {
-                    UIGame.init.StunedDone();
-                    GameObject.Find("Debug").GetComponent<UnityEngine.UI.Text>().text += "Ayo Kejar Musuh";
+                  //  UIGame.init.StunedDone();
                     falling = false;
                 }
             }
@@ -59,6 +58,7 @@ namespace Bakiak
             if (oldPos != _playerPos)
             {
                 oldPos = _playerPos;
+#if !UNITY_EDITOR
                 DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game")
                 .Child("rooms")
                     .Child(GameManager._instance.myRoom)
@@ -68,6 +68,7 @@ namespace Bakiak
                 reference.Child("Bakiak").Child("y").SetValueAsync((double)_playerPos.y);
                 reference.Child("Bakiak").Child("z").SetValueAsync((double)_playerPos.z);
                 reference.Child("MyScore").SetValueAsync(GameManager._instance.MyScore);
+#endif
             }
         }
         Vector2 firstPressPos, secondPressPos, currentSwipe;
@@ -120,7 +121,7 @@ namespace Bakiak
                     GameManager._instance.MyScore += scoreTotalWalk;
                     left = false;
                     _playerPos += new Vector3(ss, 0f, 0f);
-                    BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+//                    BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                 }
                 else if (touch.position.x >= g)
                 {
@@ -128,7 +129,7 @@ namespace Bakiak
                     left = true;
                     Debug.Log("Right");
                     _playerPos += new Vector3(ss, 0f, 0f);
-                    BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                    //BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                 }
 
             }
@@ -141,7 +142,7 @@ namespace Bakiak
                         GameManager._instance.MyScore += scoreTotalWalk;
                         left = false;
                         _playerPos += new Vector3(ss, 0f, 0f);
-                        BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                        //BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                     }
                     else
                     {
@@ -158,7 +159,8 @@ namespace Bakiak
                         left = true;
                         Debug.Log("Right");
                         _playerPos += new Vector3(ss, 0f, 0f);
-                        BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+
+                        //BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                     }
                     else
                     {

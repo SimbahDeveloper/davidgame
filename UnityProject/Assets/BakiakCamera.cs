@@ -17,18 +17,26 @@ namespace Bakiak
 
         private void LateUpdate()
         {
-//            Debug.Log(postiNew + "  " + gameObject.transform.position);
-
+            //            Debug.Log(postiNew + "  " + gameObject.transform.position);
+            //MyDebug.init.Log(postiNew + "  " + gameObject.transform.position);
             if (postiNew.x >= gameObject.transform.position.x)
             {
                 var f = BakiakPlayerControler.speed/sppedFollow * Time.deltaTime;
+
                 gameObject.transform.position += new Vector3(f, 0f, 0f);
             }
         }
-
+        public void StopFollow()
+        {
+            hay = false;
+        }
+        bool hay = true;
         public void IkutinDong(Vector3 vector)
         {
-            postiNew += vector;
+            if (hay)
+            {
+                postiNew += vector;
+            }
 //            Debug.Log(postiNew);
         }
 

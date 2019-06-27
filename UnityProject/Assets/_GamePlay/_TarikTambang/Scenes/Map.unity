@@ -1729,6 +1729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1776b1c8c89450482f0cc0406a9cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PowerMin: 1
   MyPlayer: {fileID: 899789230}
   EnemyPlayer: {fileID: 97799697}
   UiPusher: {fileID: 126889359}

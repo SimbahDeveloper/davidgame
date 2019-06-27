@@ -5,7 +5,6 @@ namespace Bakiak
 {
     public class BakiakManager : MonoBehaviour
     {
-        public GameObject ZonaGame;
         public static BakiakManager init;
         public GameObject[] myPlayer;
 
@@ -20,9 +19,10 @@ namespace Bakiak
 
         public void PlayGameBakiak(BakiakCamera.PLAYERZONEBAKIAK p)
         {
-        //    ZonaGame.SetActive(true);
-            BakiakCamera.init.SetCameraTo(p);
+            //    ZonaGame.SetActive(true);
             SetMyPlayer(p);
+            BakiakCamera.init.SetCameraTo(p);
+
         }
 
         void SetMyPlayer(BakiakCamera.PLAYERZONEBAKIAK p)

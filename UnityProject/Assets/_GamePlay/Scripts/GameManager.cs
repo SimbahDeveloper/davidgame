@@ -29,7 +29,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public List<String> UserPlay;
     [SerializeField]
-    public string MYUID ;
+    public static string MYUID ;
+    public static string namePlay;
     PlayerModel playerModel;
     bool OnRoom = false;
 
@@ -53,6 +54,8 @@ if (task.IsCompleted)
                 DataSnapshot snapshot = task.Result;
                 playerModel.name = (string)snapshot.Child("name").Value;
                 playerModel.uid = (string)snapshot.Child("uid").Value;
+                MYUID = playerModel.uid;
+                namePlay = playerModel.name;
             }
         });
         #endregion getUser
@@ -87,13 +90,16 @@ if (task.IsCompleted)
         MyScore += much;
     }
     bool Hayok = false;
+    bool Manuke = true;
     void MakeGame()
     {
+        OnRoom = false;
         push = true;
         Hayok = true;
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).Child("Play");
         if (CanMakeGame)
         {
+            CanMakeGame = false;
             for (int i = 0; i < GameType.Length; i++)
             {
                 string temp = GameType[i];
@@ -115,12 +121,22 @@ if (task.IsCompleted)
             }
             for (int i = 0; i < GameType.Length; i++)
             {
+                if (i == GameType.Length - 1)
+                {
+                    listGame += GameType[i];
+                }
+                else
+                {
+                    listGame += GameType[i]+listRaw;
+                }
                 reference.Child("Game" + i + 1).SetValueAsync(GameType[i]);
             }
             reference.Child("STATUS").SetValueAsync("READY");
-            CanMakeGame = false;
         }
     }
+
+    public static char listRaw = '#';
+    string listGame = "";
 
     public void CheckRooms()
     {
@@ -258,71 +274,80 @@ if (task.IsCompleted)
     bool push = true;
     void Update()
     {
-
 #if PLATFORM_ANDROID
-        if (OnRoom)
-        {
-            #region creatroom
-            DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
-            FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).GetValueAsync().ContinueWith(task => {
-                if (task.IsFaulted)
-                {
-
-                }
-                else if (task.IsCompleted)
-                {
-                    DataSnapshot snapshot = task.Result;
-                    if (snapshot.ChildrenCount == muchPlayerCanPlayTogetherInServer)
-                    {
-                        OnRoom = false;
-                        List<string> _UserPlay = new List<string>();
-
-                        foreach (var item in snapshot.Children)
-                        {
-                            _UserPlay.Add(item.Key);
-                            if (item.Key == playerModel.uid)
-                            {
-                                CanMakeGame = true;
-                            }
-                        }
-                        if (addedUser) {
-                            addedUser = false;
-                            for (int i = 0; i < muchPlayerCanPlayTogetherInServer; i++)
-                            {
-                                UserPlay.Add(_UserPlay[i]);
-                            }
-                        }
-                        MakeGame();
-                    }
-                }
-            });
-            #endregion creatroom
-        }
-
-        if (Hayok)
-        {
-            FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).Child("Play").GetValueAsync().ContinueWith(task =>
+            if (OnRoom)
             {
-                if (task.IsCompleted)
+            #region creatroom
+            OnRoom = false;
+            DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
+                FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).GetValueAsync().ContinueWith(task =>
                 {
-                    DataSnapshot sn = task.Result;
-                    if (sn.Child("STATUS").Value.ToString()  == "READY")
+                    if (task.IsFaulted)
                     {
-                        if (push)
+                        OnRoom = true;
+                    }
+                    else if (task.IsCompleted)
+                    {
+                        CanMakeGame = false;
+                        DataSnapshot snapshot = task.Result;
+                        if (snapshot.ChildrenCount == muchPlayerCanPlayTogetherInServer)
                         {
-                            Hayok = false;
-                            PlayGame();
+                            List<string> _UserPlay = new List<string>();
+
+                            foreach (var item in snapshot.Children)
+                            {
+                                _UserPlay.Add(item.Key);
+                                if (item.Key == playerModel.uid)
+                                {
+                                    CanMakeGame = true;
+                                }
+                            }
+                            if (addedUser)
+                            {
+                                addedUser = false;
+                                for (int i = 0; i < muchPlayerCanPlayTogetherInServer; i++)
+                                {
+                                    UserPlay.Add(_UserPlay[i]);
+                                }
+                            }
+                            MakeGame();
+                        }
+                        OnRoom = true;
+                    }
+                });
+                #endregion creatroom
+            }
+
+            if (Hayok)
+            {
+            Hayok = false;
+            FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(myRoom).Child("Play").GetValueAsync().ContinueWith(task =>
+                {
+                    if (task.IsCompleted)
+                    {
+                        DataSnapshot sn = task.Result;
+                        if (sn.Child("STATUS").Value.ToString() == "READY")
+                        {
+                            if (push)
+                            {
+                                Hayok = false;
+                                PlayGame();
+                            }
+                        }
+                        else
+                        {
+                            Hayok = true;
                         }
                     }
-                }
-            });
-        }
+                });
+            }
 #endif
     }
 
     void PlayGame()
     {
         AudioHelper.init.StopMusic();
-        SceneManager.LoadScene("DesaTambangBakiak", LoadSceneMode.Single);
+        REMBULAN.Room = myRoom;
+        SceneManager.LoadScene("DesaTambangBakiak",LoadSceneMode.Single);
     }
 }

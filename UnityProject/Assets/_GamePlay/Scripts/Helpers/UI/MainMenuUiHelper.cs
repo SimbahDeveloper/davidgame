@@ -26,41 +26,41 @@ public class MainMenuUiHelper : MonoBehaviour
     bool kelu = false;
     void HandleSwipe(SwipeAction swipeAction)
     {
-        //Debug.LogFormat("HandleSwipe: {0}", swipeAction);
-        if (swipeAction.direction == SwipeDirection.Up || swipeAction.direction == SwipeDirection.UpRight)
-        {
-            Debug.Log("up");
-        }
-        else if (swipeAction.direction == SwipeDirection.Right || swipeAction.direction == SwipeDirection.DownRight)
-        {
-            if (leaderboard.activeInHierarchy&&!kelu)
-            {
-                kelu = true;
-                leaderboard.GetComponent<Animator>().Play("LederIn");
-            }
-            else
-            {
-                kelu = true;
-                leaderboard.SetActive(true);
-            }
+        ////Debug.LogFormat("HandleSwipe: {0}", swipeAction);
+        //if (swipeAction.direction == SwipeDirection.Up || swipeAction.direction == SwipeDirection.UpRight)
+        //{
+        //    Debug.Log("up");
+        //}
+        //else if (swipeAction.direction == SwipeDirection.Right || swipeAction.direction == SwipeDirection.DownRight)
+        //{
+        //    if (leaderboard.activeInHierarchy&&!kelu)
+        //    {
+        //        kelu = true;
+        //        leaderboard.GetComponent<Animator>().Play("LederIn");
+        //    }
+        //    else
+        //    {
+        //        kelu = true;
+        //        leaderboard.SetActive(true);
+        //    }
 
-            Debug.Log("right");
-        }
-        else if (swipeAction.direction == SwipeDirection.Down || swipeAction.direction == SwipeDirection.DownLeft)
-        {
-            Debug.Log("down");
-        }
-        else if (swipeAction.direction == SwipeDirection.Left || swipeAction.direction == SwipeDirection.UpLeft)
-        {
-            // move left
-            if (kelu)
-            {
-                kelu = false;
-                leaderboard.GetComponent<Animator>().Play("LeaderOut");
-            }
+        //    Debug.Log("right");
+        //}
+        //else if (swipeAction.direction == SwipeDirection.Down || swipeAction.direction == SwipeDirection.DownLeft)
+        //{
+        //    Debug.Log("down");
+        //}
+        //else if (swipeAction.direction == SwipeDirection.Left || swipeAction.direction == SwipeDirection.UpLeft)
+        //{
+        //    // move left
+        //    if (kelu)
+        //    {
+        //        kelu = false;
+        //        leaderboard.GetComponent<Animator>().Play("LeaderOut");
+        //    }
 
-            Debug.Log("left");
-        }
+        //    Debug.Log("left");
+        //}
     }
 
 
@@ -89,10 +89,15 @@ public class MainMenuUiHelper : MonoBehaviour
 
     public void onPlayGameClik()
     {
+        GameObject.Find("Scripts").GetComponent<GameManager>().StartGame(connection);
+
+    }
+
+    public void ShowChoice()
+    {
         escapeKill = true;
         blockMe.SetActive(true);
         connection.SetActive(true);
-        GameObject.Find("Scripts").GetComponent<GameManager>().StartGame(connection);
     }
 
     public void CancelFindRoom()
