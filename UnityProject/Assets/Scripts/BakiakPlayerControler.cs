@@ -113,6 +113,7 @@ namespace Bakiak
         }
         void myKeyboard()
         {
+            var ss = speed * Time.deltaTime;
             if (firstime)
             {
                 firstime = false;
