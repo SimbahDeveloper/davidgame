@@ -78,7 +78,9 @@ namespace Bakiak
         {
 #if UNITY_EDITOR
             Bakiak.BakiakManager.init.PlayGameBakiak(Bakiak.BakiakCamera.PLAYERZONEBAKIAK.PLAYER1);
+            playerObj[0].AddComponent<BakiakPlayerStats>();
 #else
+
         ConnectionToRoom(GameManager._instance.GetPlayer().uid);
 #endif
         }

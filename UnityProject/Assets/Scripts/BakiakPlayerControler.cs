@@ -29,8 +29,8 @@ namespace Bakiak
             _playerPos = playerPos;
             p1Zone = new Vector3(Screen.width * 0.5f,Screen.height,0f);
             p2Zone =new Vector3(Screen.width, Screen.height, 0f);
-            firstime = true;
             falling = false;
+            firstime = true;
         }
 
         // Update is called once per frame
@@ -74,12 +74,12 @@ namespace Bakiak
         Vector2 firstPressPos, secondPressPos, currentSwipe;
         void InputManagerMe()
         {
-#if UNITY_EDITOR
+            if (isPlaying && !falling)
+            {
+                myKeyboard();
+            }
 
-            myKeyboard();
-#endif
-        
-        if (Input.touchCount > 0)
+            if (Input.touchCount > 0)
             {
                 if (isPlaying && !falling)
                 {
@@ -104,7 +104,9 @@ namespace Bakiak
                         //swipe up
                         if (currentSwipe.y > 0 && currentSwipe.x > -0.5f && currentSwipe.x < 0.5f )
                         {
+#if !UNITY_EDITOR
                             DODO(t);
+#endif
                         }
 
                     }
@@ -116,21 +118,23 @@ namespace Bakiak
             var ss = speed * Time.deltaTime;
             if (firstime)
             {
-                firstime = false;
                 if (Input.GetKeyDown(KeyCode.A))
                 {
-                    GameManager._instance.MyScore += scoreTotalWalk;
+                    Debug.Log("Left");
+                    firstime = false;
+                    BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                    gameObject.transform.position += new Vector3(ss, 0f, 0f);
                     left = false;
                     _playerPos += new Vector3(ss, 0f, 0f);
-                    //                    BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                 }
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
-                    GameManager._instance.MyScore += scoreTotalWalk;
-                    left = true;
+                    firstime = false;
                     Debug.Log("Right");
+                    BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                    gameObject.transform.position += new Vector3(ss, 0f, 0f);
+                    left = true;
                     _playerPos += new Vector3(ss, 0f, 0f);
-                    //BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                 }
 
             }
@@ -140,10 +144,11 @@ namespace Bakiak
                 {
                     if (left)
                     {
-                        GameManager._instance.MyScore += scoreTotalWalk;
+                        Debug.Log("Left");
+                        BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                        gameObject.transform.position += new Vector3(ss, 0f, 0f);
                         left = false;
                         _playerPos += new Vector3(ss, 0f, 0f);
-                        //BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
                     }
                     else
                     {
@@ -156,12 +161,12 @@ namespace Bakiak
                 {
                     if (!left)
                     {
-                        GameManager._instance.MyScore += scoreTotalWalk;
-                        left = true;
                         Debug.Log("Right");
-                        _playerPos += new Vector3(ss, 0f, 0f);
+                        BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                        gameObject.transform.position += new Vector3(ss, 0f, 0f);
+                        left = true;
 
-                        //BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                        _playerPos += new Vector3(ss, 0f, 0f);
                     }
                     else
                     {
@@ -181,9 +186,9 @@ namespace Bakiak
             var ss = speed * Time.deltaTime;
             if (firstime)
             {
-                firstime = false;
                 if (touch.position.x <= g)
                 {
+                    firstime = false;
                     GameManager._instance.MyScore += scoreTotalWalk;
                     left = false;
                     _playerPos += new Vector3(ss, 0f, 0f);
@@ -191,6 +196,7 @@ namespace Bakiak
                 }
                 else if (touch.position.x >= g)
                 {
+                    firstime = false;
                     GameManager._instance.MyScore += scoreTotalWalk;
                     left = true;
                     Debug.Log("Right");

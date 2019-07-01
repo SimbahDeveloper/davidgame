@@ -23,8 +23,9 @@ namespace Bakiak
         }
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.transform.gameObject.GetComponent<BakiakPlayerStats>() != null)
+            if (collision.transform.gameObject.GetComponent<BakiakPlayerControler>() != null)
             {
+                Debug.Log("ADD");
                 winingList.Add("Aku");
                 if (collision.transform.gameObject.GetComponent<BakiakPlayerControler>() != null)
                 {
@@ -35,7 +36,9 @@ namespace Bakiak
                     string wew="";
 
                     wew += "#" + winingList.Count;
+#if !UNITY_EDITOR
                     wew += " "+GameManager.namePlay;
+#endif
                     win.text = wew;
                     win.gameObject.SetActive(true);
                     backMenu.SetActive(true);

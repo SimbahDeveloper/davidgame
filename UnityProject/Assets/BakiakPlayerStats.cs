@@ -47,6 +47,7 @@ namespace Bakiak
         Vector3 kadir;
         void Update()
         {
+#if !UNITY_EDITOR
             FirebaseDatabase.DefaultInstance.GetReference("game").Child("rooms").Child(GameManager._instance.myRoom).Child(UID).Child("Bakiak").GetValueAsync().ContinueWith(task =>
             {
                 if (task.IsCompleted)
@@ -74,6 +75,7 @@ namespace Bakiak
                     }
                 }
             });
+#endif
         }
 
         void ChildChange(object sender, ValueChangedEventArgs args)
