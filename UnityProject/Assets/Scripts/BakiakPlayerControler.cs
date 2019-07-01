@@ -74,6 +74,10 @@ namespace Bakiak
         Vector2 firstPressPos, secondPressPos, currentSwipe;
         void InputManagerMe()
         {
+#if UNITY_EDITOR
+
+            myKeyboard();
+#endif
         
         if (Input.touchCount > 0)
             {
@@ -107,7 +111,68 @@ namespace Bakiak
                 }
             }
         }
+        void myKeyboard()
+        {
+            if (firstime)
+            {
+                firstime = false;
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    GameManager._instance.MyScore += scoreTotalWalk;
+                    left = false;
+                    _playerPos += new Vector3(ss, 0f, 0f);
+                    //                    BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    GameManager._instance.MyScore += scoreTotalWalk;
+                    left = true;
+                    Debug.Log("Right");
+                    _playerPos += new Vector3(ss, 0f, 0f);
+                    //BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                }
 
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.A))
+                {
+                    if (left)
+                    {
+                        GameManager._instance.MyScore += scoreTotalWalk;
+                        left = false;
+                        _playerPos += new Vector3(ss, 0f, 0f);
+                        //BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                    }
+                    else
+                    {
+                        kuy = 0;
+                        GameObject.Find("Debug").GetComponent<UnityEngine.UI.Text>().text += "Falling " + timeWakeUp + "s";
+                        falling = true;
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    if (!left)
+                    {
+                        GameManager._instance.MyScore += scoreTotalWalk;
+                        left = true;
+                        Debug.Log("Right");
+                        _playerPos += new Vector3(ss, 0f, 0f);
+
+                        //BakiakCamera.init.IkutinDong(new Vector3(ss, 0f, 0f));
+                    }
+                    else
+                    {
+                        kuy = 0;
+                        GameObject.Find("Debug").GetComponent<UnityEngine.UI.Text>().text += "Falling " + timeWakeUp + "s";
+                        falling = true;
+                    }
+                }
+            }
+
+
+        }
         void DODO(Touch touch)
         {
 
