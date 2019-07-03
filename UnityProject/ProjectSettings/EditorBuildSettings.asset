@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_GamePlay/Scenes/Splash.unity
+    path: Assets/#Scenes Yang dipake/Splash.unity
     guid: f12cabf803cb44b4c9f6974868520743
   - enabled: 1
-    path: Assets/_GamePlay/Scenes/MainMenu.unity
+    path: Assets/#Scenes Yang dipake/MainMenu.unity
     guid: c5b661ceec8c6497bbd0ccc95ac398c4
   - enabled: 1
-    path: Assets/Scenes/DesaTambangBakiak.unity
+    path: Assets/#Scenes Yang dipake/DesaTambangBakiak.unity
     guid: e114207432a9bee46ba4b17eda4646fc
   m_configObjects: {}
