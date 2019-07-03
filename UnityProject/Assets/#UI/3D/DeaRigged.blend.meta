@@ -89,6 +89,8 @@ ModelImporter:
     2100006: Material
     2100008: Material_006
     2100010: Material_003
+    2100012: Face
+    2100014: Main_Textures
     4300000: Cube_017
     4300002: Cube_016
     4300004: Cube_015
@@ -105,6 +107,16 @@ ModelImporter:
     13700008: Cube_016
     13700010: Cube_017
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Face
+    second: {fileID: 2100000, guid: bda25a0a00259064187fa3a046784af3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main_Textures
+    second: {fileID: 2100000, guid: bda25a0a00259064187fa3a046784af3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
