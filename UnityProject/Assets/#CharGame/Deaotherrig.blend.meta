@@ -77,6 +77,138 @@ ModelImporter:
     100142: Wajah
     100144: Bakiak_L
     100146: Bakiak_R
+    100148: Badan_001
+    100150: Baju_001
+    100152: Boots
+    100154: Celana_001
+    100156: foot_raw_L_0
+    100158: foot_raw_R_0
+    100160: forearm_raw_L_0
+    100162: forearm_raw_R_0
+    100164: hand_IK_R_0
+    100166: hand_raw_L_0
+    100168: hand_raw_R_0
+    100170: handpalm_raw_L_0
+    100172: handpalm_raw_R_0
+    100174: handtips_raw_L_0
+    100176: handtips_raw_R_0
+    100178: head_0
+    100180: Head_raw_0
+    100182: Headhinge_0
+    100184: Hips_0
+    100186: Hips_raw_0
+    100188: Kepala
+    100190: metarig_001
+    100192: neck_0
+    100194: Neck_raw_0
+    100196: Rambut
+    100198: shin_IK_R_0
+    100200: shin_raw_L_0
+    100202: shin_raw_R_0
+    100204: shoulder_raw_L_0
+    100206: shoulder_raw_R_0
+    100208: spine_002_raw_0
+    100210: spine_003_raw_0
+    100212: Spine_hinge_0
+    100214: thigh_IK_L_0
+    100216: thigh_IK_R_0
+    100218: thigh_raw_L_0
+    100220: thigh_raw_R_0
+    100222: thumb_raw_L_0
+    100224: thumb_raw_R_0
+    100226: thumbtips_raw_L_0
+    100228: thumbtips_raw_R_0
+    100230: toe_raw_L_0
+    100232: toe_raw_R_0
+    100234: Upperarm_IK_L_0
+    100236: Upperarm_IK_R_0
+    100238: Upperarm_raw_L_0
+    100240: Upperarm_raw_R_0
+    100242: Cube_000
+    100244: Cube_002_Cube_001
+    100246: Cube_004
+    100248: Cube_009
+    100250: Cube_010
+    100252: Cube_024
+    100254: Cube_025
+    100256: Cube_026
+    100258: Cube_027
+    100260: Cube_028
+    100262: Cube_029
+    100264: foot_raw_L_1
+    100266: foot_raw_L_2
+    100268: foot_raw_R_1
+    100270: foot_raw_R_2
+    100272: forearm_raw_L_1
+    100274: forearm_raw_L_2
+    100276: forearm_raw_R_1
+    100278: forearm_raw_R_2
+    100280: hand_raw_L_1
+    100282: hand_raw_L_2
+    100284: hand_raw_R_1
+    100286: hand_raw_R_2
+    100288: handpalm_raw_L_1
+    100290: handpalm_raw_L_2
+    100292: handpalm_raw_R_1
+    100294: handpalm_raw_R_2
+    100296: handtips_raw_L_1
+    100298: handtips_raw_L_2
+    100300: handtips_raw_R_1
+    100302: handtips_raw_R_2
+    100304: Head_raw_1
+    100306: Head_raw_2
+    100308: Hips_1
+    100310: Hips_2
+    100312: Hips_raw_1
+    100314: Hips_raw_2
+    100316: metarig_002
+    100318: metarig_003
+    100320: neck_1
+    100322: neck_2
+    100324: Neck_raw_1
+    100326: Neck_raw_2
+    100328: root_1
+    100330: root_2
+    100332: shin_IK_R_1
+    100334: shin_IK_R_2
+    100336: shin_raw_L_1
+    100338: shin_raw_L_2
+    100340: shin_raw_R_1
+    100342: shin_raw_R_2
+    100344: shoulder_raw_L_1
+    100346: shoulder_raw_L_2
+    100348: shoulder_raw_R_1
+    100350: shoulder_raw_R_2
+    100352: spine_002_raw_1
+    100354: spine_002_raw_2
+    100356: spine_003_raw_1
+    100358: spine_003_raw_2
+    100360: Spine_hinge_1
+    100362: Spine_hinge_2
+    100364: thigh_IK_L_1
+    100366: thigh_IK_L_2
+    100368: thigh_IK_R_1
+    100370: thigh_IK_R_2
+    100372: thigh_raw_L_1
+    100374: thigh_raw_L_2
+    100376: thigh_raw_R_1
+    100378: thigh_raw_R_2
+    100380: thumb_raw_L_1
+    100382: thumb_raw_L_2
+    100384: thumb_raw_R_1
+    100386: thumb_raw_R_2
+    100388: thumbtips_raw_L_1
+    100390: thumbtips_raw_L_2
+    100392: thumbtips_raw_R_1
+    100394: thumbtips_raw_R_2
+    100396: toe_raw_L_1
+    100398: toe_raw_L_2
+    100400: toe_raw_R_1
+    100402: toe_raw_R_2
+    100404: Upperarm_raw_L_1
+    100406: Upperarm_raw_L_2
+    100408: Upperarm_raw_R_1
+    100410: Upperarm_raw_R_2
     400000: Badan
     400002: Baju
     400004: Celana
@@ -151,6 +283,138 @@ ModelImporter:
     400142: Wajah
     400144: Bakiak_L
     400146: Bakiak_R
+    400148: Badan_001
+    400150: Baju_001
+    400152: Boots
+    400154: Celana_001
+    400156: foot_raw_L_0
+    400158: foot_raw_R_0
+    400160: forearm_raw_L_0
+    400162: forearm_raw_R_0
+    400164: hand_IK_R_0
+    400166: hand_raw_L_0
+    400168: hand_raw_R_0
+    400170: handpalm_raw_L_0
+    400172: handpalm_raw_R_0
+    400174: handtips_raw_L_0
+    400176: handtips_raw_R_0
+    400178: head_0
+    400180: Head_raw_0
+    400182: Headhinge_0
+    400184: Hips_0
+    400186: Hips_raw_0
+    400188: Kepala
+    400190: metarig_001
+    400192: neck_0
+    400194: Neck_raw_0
+    400196: Rambut
+    400198: shin_IK_R_0
+    400200: shin_raw_L_0
+    400202: shin_raw_R_0
+    400204: shoulder_raw_L_0
+    400206: shoulder_raw_R_0
+    400208: spine_002_raw_0
+    400210: spine_003_raw_0
+    400212: Spine_hinge_0
+    400214: thigh_IK_L_0
+    400216: thigh_IK_R_0
+    400218: thigh_raw_L_0
+    400220: thigh_raw_R_0
+    400222: thumb_raw_L_0
+    400224: thumb_raw_R_0
+    400226: thumbtips_raw_L_0
+    400228: thumbtips_raw_R_0
+    400230: toe_raw_L_0
+    400232: toe_raw_R_0
+    400234: Upperarm_IK_L_0
+    400236: Upperarm_IK_R_0
+    400238: Upperarm_raw_L_0
+    400240: Upperarm_raw_R_0
+    400242: Cube_000
+    400244: Cube_002_Cube_001
+    400246: Cube_004
+    400248: Cube_009
+    400250: Cube_010
+    400252: Cube_024
+    400254: Cube_025
+    400256: Cube_026
+    400258: Cube_027
+    400260: Cube_028
+    400262: Cube_029
+    400264: foot_raw_L_1
+    400266: foot_raw_L_2
+    400268: foot_raw_R_1
+    400270: foot_raw_R_2
+    400272: forearm_raw_L_1
+    400274: forearm_raw_L_2
+    400276: forearm_raw_R_1
+    400278: forearm_raw_R_2
+    400280: hand_raw_L_1
+    400282: hand_raw_L_2
+    400284: hand_raw_R_1
+    400286: hand_raw_R_2
+    400288: handpalm_raw_L_1
+    400290: handpalm_raw_L_2
+    400292: handpalm_raw_R_1
+    400294: handpalm_raw_R_2
+    400296: handtips_raw_L_1
+    400298: handtips_raw_L_2
+    400300: handtips_raw_R_1
+    400302: handtips_raw_R_2
+    400304: Head_raw_1
+    400306: Head_raw_2
+    400308: Hips_1
+    400310: Hips_2
+    400312: Hips_raw_1
+    400314: Hips_raw_2
+    400316: metarig_002
+    400318: metarig_003
+    400320: neck_1
+    400322: neck_2
+    400324: Neck_raw_1
+    400326: Neck_raw_2
+    400328: root_1
+    400330: root_2
+    400332: shin_IK_R_1
+    400334: shin_IK_R_2
+    400336: shin_raw_L_1
+    400338: shin_raw_L_2
+    400340: shin_raw_R_1
+    400342: shin_raw_R_2
+    400344: shoulder_raw_L_1
+    400346: shoulder_raw_L_2
+    400348: shoulder_raw_R_1
+    400350: shoulder_raw_R_2
+    400352: spine_002_raw_1
+    400354: spine_002_raw_2
+    400356: spine_003_raw_1
+    400358: spine_003_raw_2
+    400360: Spine_hinge_1
+    400362: Spine_hinge_2
+    400364: thigh_IK_L_1
+    400366: thigh_IK_L_2
+    400368: thigh_IK_R_1
+    400370: thigh_IK_R_2
+    400372: thigh_raw_L_1
+    400374: thigh_raw_L_2
+    400376: thigh_raw_R_1
+    400378: thigh_raw_R_2
+    400380: thumb_raw_L_1
+    400382: thumb_raw_L_2
+    400384: thumb_raw_R_1
+    400386: thumb_raw_R_2
+    400388: thumbtips_raw_L_1
+    400390: thumbtips_raw_L_2
+    400392: thumbtips_raw_R_1
+    400394: thumbtips_raw_R_2
+    400396: toe_raw_L_1
+    400398: toe_raw_L_2
+    400400: toe_raw_R_1
+    400402: toe_raw_R_2
+    400404: Upperarm_raw_L_1
+    400406: Upperarm_raw_L_2
+    400408: Upperarm_raw_R_1
+    400410: Upperarm_raw_R_2
     2100000: Material_009
     2100002: Material_007
     2100004: Material_004
@@ -160,6 +424,23 @@ ModelImporter:
     2100012: Material_006
     2100014: Main_Textures
     2100016: BakiakTex
+    2100018: Material_000
+    2100020: Body__3_png_001
+    2100022: Rambut
+    2100024: Boots
+    2100026: MaterialCelana
+    2100028: Material_028
+    2100030: Material_025
+    2100032: Material_027
+    2100034: Material_028__4_png_001
+    2100036: Material_029
+    2100038: Material_026
+    2100040: Material_022
+    2100042: Material_024
+    2100044: Material_023
+    2100046: Material_019__2_png_002
+    2100048: Material_020
+    2100050: Material_021
     2300000: Elbow_pole_L
     2300002: FootIK_custom
     2300004: forearm_viz_custom_L
@@ -197,6 +478,23 @@ ModelImporter:
     4300032: Cube
     4300034: Bakiak_L
     4300036: Bakiak_R
+    4300038: Kepala
+    4300040: Rambut
+    4300042: Boots
+    4300044: Celana_001
+    4300046: Baju_001
+    4300048: Badan_001
+    4300050: Cube_009
+    4300052: Cube_010
+    4300054: Cube_002_Cube_001
+    4300056: Cube_000
+    4300058: Cube_004
+    4300060: Cube_026
+    4300062: Cube_024
+    4300064: Cube_025
+    4300066: Cube_029
+    4300068: Cube_028
+    4300070: Cube_027
     7400000: Default Take
     7400002: Bakiak_Idle
     7400004: Bakiak_L
@@ -207,6 +505,8 @@ ModelImporter:
     7400014: Manjat_loopp
     7400016: TarikTambang_Idle
     7400018: TarikTambang_Tarik
+    7400020: Bakiak_L_001
+    7400022: Bakiak_L_002
     9500000: //RootNode
     13700000: Badan
     13700002: Baju
@@ -218,6 +518,23 @@ ModelImporter:
     13700014: Wajah
     13700016: Bakiak_L
     13700018: Bakiak_R
+    13700020: Badan_001
+    13700022: Baju_001
+    13700024: Boots
+    13700026: Celana_001
+    13700028: Kepala
+    13700030: Rambut
+    13700032: Cube_000
+    13700034: Cube_002_Cube_001
+    13700036: Cube_004
+    13700038: Cube_009
+    13700040: Cube_010
+    13700042: Cube_024
+    13700044: Cube_025
+    13700046: Cube_026
+    13700048: Cube_027
+    13700050: Cube_028
+    13700052: Cube_029
     2186277476908879412: ImportLogs
   externalObjects:
   - first:
