@@ -43,6 +43,12 @@ ModelImporter:
     100074: toe_R
     100076: upper_arm_L
     100078: upper_arm_R
+    100080: Baju
+    100082: Celana
+    100084: Jilbab
+    100086: Kepala
+    100088: Kulit
+    100090: Sepatu
     400000: Bone
     400002: Cube_012
     400004: Cube_013
@@ -83,6 +89,12 @@ ModelImporter:
     400074: toe_R
     400076: upper_arm_L
     400078: upper_arm_R
+    400080: Baju
+    400082: Celana
+    400084: Jilbab
+    400086: Kepala
+    400088: Kulit
+    400090: Sepatu
     2100000: Material_007
     2100002: Material_004
     2100004: Material_005
@@ -97,6 +109,12 @@ ModelImporter:
     4300006: Cube_013
     4300008: Cube_012
     4300010: Cube_014
+    4300012: Kepala
+    4300014: Celana
+    4300016: Sepatu
+    4300018: Jilbab
+    4300020: Kulit
+    4300022: Baju
     7400000: Default Take
     7400002: IdleWaving
     9500000: //RootNode
@@ -106,6 +124,12 @@ ModelImporter:
     13700006: Cube_015
     13700008: Cube_016
     13700010: Cube_017
+    13700012: Baju
+    13700014: Celana
+    13700016: Jilbab
+    13700018: Kepala
+    13700020: Kulit
+    13700022: Sepatu
   externalObjects:
   - first:
       type: UnityEngine:Material

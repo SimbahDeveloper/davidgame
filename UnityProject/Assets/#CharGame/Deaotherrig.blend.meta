@@ -75,6 +75,8 @@ ModelImporter:
     100138: Upperarm_raw_L
     100140: Upperarm_raw_R
     100142: Wajah
+    100144: Bakiak_L
+    100146: Bakiak_R
     400000: Badan
     400002: Baju
     400004: Celana
@@ -147,6 +149,8 @@ ModelImporter:
     400138: Upperarm_raw_L
     400140: Upperarm_raw_R
     400142: Wajah
+    400144: Bakiak_L
+    400146: Bakiak_R
     2100000: Material_009
     2100002: Material_007
     2100004: Material_004
@@ -154,6 +158,8 @@ ModelImporter:
     2100008: Material_003
     2100010: Material
     2100012: Material_006
+    2100014: Main_Textures
+    2100016: BakiakTex
     2300000: Elbow_pole_L
     2300002: FootIK_custom
     2300004: forearm_viz_custom_L
@@ -189,6 +195,8 @@ ModelImporter:
     4300028: Jilbab
     4300030: Badan
     4300032: Cube
+    4300034: Bakiak_L
+    4300036: Bakiak_R
     7400000: Default Take
     7400002: Bakiak_Idle
     7400004: Bakiak_L
@@ -208,8 +216,15 @@ ModelImporter:
     13700010: Jilbab
     13700012: Sepatu
     13700014: Wajah
+    13700016: Bakiak_L
+    13700018: Bakiak_R
     2186277476908879412: ImportLogs
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main_Textures
+    second: {fileID: 2100000, guid: bda25a0a00259064187fa3a046784af3, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
